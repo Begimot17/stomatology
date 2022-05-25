@@ -13,9 +13,9 @@
   
   </style>
 <div class="registration-cssave">
-    <form action={% url 'authorize:log' %} method='POST'>
+    <form class="registration-cssave" action={% url 'authorize:log' %} method='POST'>
       {% csrf_token %}
-        <h3 class="text-center">Форма входа</h3>
+        <h3 class="text-center">Авторізація</h3>
         <div class="form-group">
             <input class="form-control item" type="text" name="username" maxlength="15" minlength="4" pattern="^[a-zA-Z0-9_.-]*$" id="username" placeholder="Логин" required>
         </div>

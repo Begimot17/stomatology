@@ -22,5 +22,10 @@ urlpatterns = [
     path('materials/', include('materials.urls')),
     path('patients/', include('patients.urls')),
     path('timetable/', include('timetable.urls')),
+    path('stage1/', include('stage1.urls')),
+    path('stage2/', include('stage2.urls')),
+    path('stage3/', include('stage3.urls')),
+    path('stage4/', include('stage4.urls')),
+    path('card/', include('card.urls')),
     path('admin/', admin.site.urls),
 ]

@@ -1,15 +1,21 @@
-body{
+body {
     margin: 0;
 }
-img.logo{
+label{
+    font-family: 'Lobster Bold';
+    font-size: 22px;
+}
+img.logo {
     width: 180px;
     height: 180px;
 }
-button{
+h2,h3{text-align:center}
+
+button {
     margin-right: 10px;
     width: 100px;
     height: 50px;
-        background-color:cornflowerblue;
+    background-color: cornflowerblue;
     border: none;
     border-radius: 8px;
     color: black;
@@ -17,74 +23,81 @@ button{
     text-align: center;
     font-size: 16px;
 }
-input,select{
+
+input, select {
     border: 1px solid black;
     padding: 10px;
     margin-bottom: 10px;
     border-radius: 5px;
- }
-button:hover{
-    background-color: white;
-    color:cornflowerblue;
 }
+
+button:hover {
+    background-color: white;
+    color: cornflowerblue;
+}
+
 .nav-title {
-    font-family: 'Lobster Bold' ;
+    font-family: 'Lobster Bold';
     font-size: 52px;
     margin: auto;
 }
-header{
+
+header {
     background-color: cornflowerblue;
     grid-template-columns: 1fr 9fr;
     display: grid;
 }
-.nav-1{
+
+.nav-1 {
     height: 100px;
-    grid-template-columns: 7fr 1fr ;
+    grid-template-columns: 7fr 1fr;
 
     display: grid;
-    padding: 10px;
 }
-.nav-2{
-    grid-template-columns:7fr 1fr ;
+
+.nav-2 {
+    grid-template-columns: 7fr 1fr;
     display: grid;
-    
+
 }
-.nav-1>div{
+
+.nav-1 > div {
     display: flex;
-    align-items:center;
+    align-items: center;
 }
-.nav-2>div{
+
+.nav-2 > div {
     display: flex;
     margin: auto;
-    align-items:center;
+    align-items: center;
 }
-.main{
+
+.main {
     display: grid;
 }
-.action{
-    margin: 10px;
-}
-.action>div{
-    padding: 10px;
-}
-.patient-card{
-    grid-template-columns:7fr 1fr ;
+
+.patient-card {
+    grid-template-columns: 7fr 1fr;
     display: grid;
 }
-.right{
+
+.right {
     margin-left: auto;
 }
-.nav-2 button{
+
+.nav-2 button {
     width: 100px;
     height: 75px;
     border-radius: 0px;
 }
-button.add-btn{
+
+button.add-btn {
     width: 150px;
 }
-fieldset.gender{
+
+fieldset.gender {
     width: 3em;
-    grid-template-columns: 1fr 1fr ;
+    grid-template-columns: 1fr 1fr;
     display: grid;
 }
 
@@ -107,19 +120,33 @@ table td {
     border: 1px solid #dddddd;
     padding: 5px;
 }
+
 .registration-cssave {
     margin: auto;
+    align-items: center;
+
 }
 
 .registration-cssave form {
+    display: grid;
     max-width: 800px;
     padding: 50px 70px;
     border-radius: 10px;
     box-shadow: 4px 4px 15px rgba(0, 0, 0, 0.2);
     background-color: #fff;
+
+}
+.registration-cssave .form-group button{
+    width: 100%;
 }
 
 .registration-cssave form h3 {
     font-weight: bold;
     margin-bottom: 30px;
+}
+
+.form > div {
+    display: grid;
+
+    grid-template-columns: 2fr 5fr
 }

@@ -2,4 +2,77 @@
 {% block title %}Визначення вартісної оцінки{% endblock %}
 {% block content %}
 {% load static %}
+    <style>.item-list {
+    text-align: center;
+    display: grid;
+    align-items: center;
+    grid-template-columns: 1fr 1fr;
+    grid-column-gap: 10px;
+    grid-row-gap: 10px;
+}
+.item-list h2{
+    border-bottom: black solid 5px;
+}
+.diag{
+    height: 350px;
+}</style>
+    <script type="text/javascript">
+// Load google charts
+google.charts.load('current', {'packages':['corechart']});
+google.charts.setOnLoadCallback(drawChart);
+
+// Draw the chart and set the chart values
+function drawChart() {
+  var data = google.visualization.arrayToDataTable([
+  ['Task', 'Hours per Day'],
+  ['Протезування', 8],
+  ['Микропротез', 2],
+  ['Видновлення', 2]
+]);
+
+  // Optional; add a title and set the width and height of the chart
+  var options = {'title':'Популярность видов протезов' };
+
+  // Display the chart inside the <div> element with id="piechart"
+  var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+  chart.draw(data, options);
+}
+</script>
+    <script>
+        google.load("visualization", "1", {packages: ["corechart"]});
+        google.setOnLoadCallback(drawChart);
+
+        function drawChart() {
+            var data = google.visualization.arrayToDataTable([
+                ['Дней', 'Кол-во дней'],
+                ['Немецкий', 2],
+                ['Французский', 6],
+                ['Чехословатцкий', 4]
+            ]);
+            var options = {
+                title: 'Сроки створення  протезов',
+                hAxis: {title: 'Країна виробник'},
+                vAxis: {title: 'Кол-во дней'}
+            };
+            var chart = new google.visualization.ColumnChart(document.getElementById('oil2'));
+            chart.draw(data, options);
+        }
+    </script>
+    <h2>Анализ</h2>
+    <div class="item-list">
+        <div>
+            <label for="">С</label>
+            <input type="date" name="calendar">
+            <label for="">По</label>
+            <input type="date" name="calendar">
+            <div class="diag" id="piechart"></div>
+        </div>
+        <div>
+            <label for="">С</label>
+            <input type="date" name="calendar">
+            <label for="">По</label>
+            <input type="date" name="calendar">
+            <div class="diag" id="oil2"></div>
+        </div>
+    </div>
 {% endblock %}

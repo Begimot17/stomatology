@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% block title %}Визначення вартісної оцінки{% endblock %}
+{% block content %}
+    {% load static %}
+    <div class="action">
+      <div>
+        <h2>Картка пацієнта</h2>
+      </div>
+      <div class="patient-card">
+        <div>
+          <div>
+            <input type="text" placeholder="Прізвище">
+            <input type="text" placeholder="Ім'я">
+            <input type="text" placeholder="По батькові">
+            <input type="text" placeholder="Телефон">
+            <input type="text" placeholder="Дата народження">
+          </div>
+          <div>
+            <select name="" id=""><option value="value1">Значение 1</option>
+              <option value="value2" selected>Значение 2</option>
+              <option value="value3">Значение 3</option></select>
+              <select name="" id=""><option value="value1">Значение 1</option>
+                <option value="value2" selected>Значение 2</option>
+                <option value="value3">Значение 3</option></select>
+                <select name="" id=""><option value="value1">Значение 1</option>
+                  <option value="value2" selected>Значение 2</option>
+                  <option value="value3">Значение 3</option></select>
+          </div>
+        </div>
+        <div>
+          <fieldset class="gender">
+            <legend>Стать</legend>
+            <div>
+              <label for="gender">М</label>
+              <input type="checkbox" id="coding" name="interest" value="coding">
+
+            </div>
+            <div>
+              <label for="gender">Ж</label>
+              <input type="checkbox" id="music" name="interest" value="music">
+
+            </div>
+          </fieldset>
+        </div>
+      </div>
+
+    </div>
+    <h2>Етапи лікування</h2>
+    <div class="form">
+        <div><label for="">Етап 1 / 21.10.2022</label><input type="text"></div>
+        <div><label for="">Етап 2 / 21.10.2022</label><input type="text"></div>
+        <div><label for="">Етап 3 / 21.10.2022</label><input type="text"></div>
+        <div><label for="">Етап 4 / 21.10.2022</label><input type="text"></div>
+        <div><label for="">Перевірка 1 / 21.10.2022</label><input type="text"></div>
+        <div><label for="">Перевірка 2 / 21.10.2022</label><input type="text"></div>
+        <div><label for="">Перевірка 3 / 21.10.2022</label><input type="text"></div>
+        <button>Print</button>
+    </div>
+    </div>
+{% endblock %}
