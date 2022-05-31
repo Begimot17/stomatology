@@ -15,15 +15,15 @@
 <div class="registration-cssave">
     <form class="registration-cssave" action={% url 'authorize:log' %} method='POST'>
       {% csrf_token %}
-        <h3 class="text-center">Авторізація</h3>
+        <h3 class="text-center">Авторизація</h3>
         <div class="form-group">
-            <input class="form-control item" type="text" name="username" maxlength="15" minlength="4" pattern="^[a-zA-Z0-9_.-]*$" id="username" placeholder="Логин" required>
+            <input class="form-control item" type="text" name="username" maxlength="15" minlength="4" pattern="^[a-zA-Z0-9_.-]*$" id= "username" placeholder="Логін" required>
         </div>
         <div class="form-group">
             <input class="form-control item" type="password" name="password" minlength="6" id="password" placeholder="Пароль" required>
         </div>
         <div class="form-group">
-            <button class="btn btn-primary btn-block create-account" type="submit">Вхiд</button>
+            <button class="btn btn-primary btn-block create-account" type="submit">Вхід</button>
         </div>
     </form>
 </div>

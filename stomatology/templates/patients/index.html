@@ -1,63 +1,68 @@
 {% extends 'base.html' %}
 {% block title %}Визначення вартісної оцінки{% endblock %}
 {% block content %}
-{% load static %}
-    <h2>Пациенты</h2>
+    {% load static %}
+    <h2>Пацієнти</h2>
     <table>
-      <thead>
+        <thead>
         <th>№</th>
-        <th>ПIБ</th>
+        <th>ПІБ</th>
         <th>Телефон</th>
         <th>Дата народження</th>
-        <th>Тип протеза</th>
+        <th>Тип протезу</th>
         <th>Етап 1</th>
         <th>Етап 2</th>
         <th>Етап 3</th>
         <th>Етап 4</th>
-        <th>Перевiрки</th>
+        <th>Перевірки</th>
         <th>Статус</th>
-      </thead>
-      <tbody>
-        <tr>
-            <td>1</td>
-          <td>Иванов Иван Иванович</td>
-          <td>096311745</td>
-          <td>31.10.1999</td>
-            <td>Золотой</td>
-          <td>+</td>
-          <td>+</td>
-          <td>+</td>
-          <td>23.06.22</td>
-          <td>22.06.22</td>
-          <td>1 перевир</td>
-
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>Петров Иван Иванович</td>
-          <td>096311745</td>
-          <td>12.10.1999</td>
-            <td>Серебряний</td>
-          <td>+</td>
-          <td>+</td>
-          <td>+</td>
-          <td>23.06.22</td>
-          <td>22.06.22</td>
-          <td>3 перевир</td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td>Сидоров Иван Иванович</td>
-          <td>096311745</td>
-          <td>22.10.1990</td>
-            <td>Бронзовий</td>
-          <td>+</td>
-          <td>+</td>
-          <td>21.06.22</td>
-          <td>23.06.22</td>
-          <td>22.06.22</td>
-          <td>2 перевир</td>
-        </tr>
-      </tbody>
+        </thead>
+        <tbody>
+        {% for client in clients %}
+            <tr>
+            <td>{{ client.id }}</td>
+            <td><a href={% url 'card:index' client.id %}>
+                        {{ client.fio }}
+                </a></td>
+            <td>{{ client.phone }}</td>
+            <td>{{ client.date_birth }}</td>
+            <td>{{ client.patientcard.prosthesis.type.name }}</td>
+            <td>
+                <a href={% url 'stage1:index' client.id %}>
+                    {% if client.patientcard.prosthesis.stages_1.date_record %}
+                        {{ client.patientcard.prosthesis.stages_1.date_record }}
+                    {% else %}
+                        Перейти
+                    {% endif %}
+                </a></td>
+            <td>
+                <a href={% url 'stage2:index' client.id %}>
+                    {% if client.patientcard.prosthesis.stages_2.date_record %}
+                        {{ client.patientcard.prosthesis.stages_2.date_record }}
+                    {% else %}
+                        Перейти
+                    {% endif %}
+                </a>
+            </td>
+            <td>
+                <a href={% url 'stage3:index' client.id %}>
+                    {% if client.patientcard.prosthesis.stages_3.date_record %}
+                        {{ client.patientcard.prosthesis.stages_3.date_record }}
+                    {% else %}
+                        Перейти
+                    {% endif %}
+                </a></td>
+            <td>
+                <a href={% url 'stage4:index' client.id %}>
+                    {% if client.patientcard.prosthesis.stages_4.date_record %}
+                        {{ client.patientcard.prosthesis.stages_4.date_record }}
+                    {% else %}
+                        Перейти
+                    {% endif %}
+                </a></td>
+            <td>{{ client.patientcard.prosthesis.id }}</td>
+            <td>{{ client.patientcard.status }}</td>
+        {% endfor %}
+        </tbody>
     </table>
 {% endblock %}

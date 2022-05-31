@@ -26,12 +26,12 @@ function drawChart() {
   var data = google.visualization.arrayToDataTable([
   ['Task', 'Hours per Day'],
   ['Протезування', 8],
-  ['Микропротез', 2],
-  ['Видновлення', 2]
+  ['Мікропротез', 2],
+  ['Відновлення', 2]
 ]);
 
   // Optional; add a title and set the width and height of the chart
-  var options = {'title':'Популярность видов протезов' };
+  var options = {'title':'Популярність видів протезів'};
 
   // Display the chart inside the <div> element with id="piechart"
   var chart = new google.visualization.PieChart(document.getElementById('piechart'));
@@ -44,21 +44,21 @@ function drawChart() {
 
         function drawChart() {
             var data = google.visualization.arrayToDataTable([
-                ['Дней', 'Кол-во дней'],
-                ['Немецкий', 2],
-                ['Французский', 6],
-                ['Чехословатцкий', 4]
+                ['Днів', 'Кількість днів'],
+                ['Німецький', 2],
+                ['Французький', 6],
+                ['Чехословатський', 4]
             ]);
             var options = {
-                title: 'Сроки створення  протезов',
+                title: 'Терміни створення протезів',
                 hAxis: {title: 'Країна виробник'},
-                vAxis: {title: 'Кол-во дней'}
+                vAxis: {title: 'Кількість днів'}
             };
             var chart = new google.visualization.ColumnChart(document.getElementById('oil2'));
             chart.draw(data, options);
         }
     </script>
-    <h2>Анализ</h2>
+    <h2>Аналіз</h2>
     <div class="item-list">
         <div>
             <label for="">С</label>

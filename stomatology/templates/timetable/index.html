@@ -3,35 +3,25 @@
 {% block content %}
 {% load static %}
 
-<h2>Графік работи</h2>
-    <table>
-      <thead>
-        <th>№</th>
-        <th>Пациент</th>
-        <th>Статус</th>
-        <th>Время прийома</th>
+<h2>Графік роботи</h2>
+     <table>
+       <thead>
+         <th>№</th>
+         <th>Пацієнт</th>
+         <th>Статус</th>
+         <th>Час прийому</th>
 
-      </thead>
-      <tbody>
-        <tr>
-          <td>1</td>
-          <td>Иванов Иван Иванович</td>
-           <td>Етап 2</td>
-          <td>25.06.2022 12:25</td>
-
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>Илон Маск</td>
-            <td>Етап 1</td>
-          <td>25.06.2022 15:25</td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td>Майкл Джордан</td>
-            <td>Етап 3</td>
-          <td>26.06.2022 12:30</td>
-        </tr>
-      </tbody>
-    </table>
+       </thead>
+       <tbody>
+         {% for schedule in schedules %}
+            <tr>
+                <td>{{ schedule.id }}</td>
+                <td><a href={% url 'card:index' schedule.patient_card.client.id %}>
+                        {{ schedule.patient_card.client.fio }}
+                </a></td>
+                <td>{{ schedule.patient_card.status }}</td>
+                <td>{{ schedule.date_birth }}</td>
+        {% endfor %}
+       </tbody>
+     </table>
 {% endblock %}

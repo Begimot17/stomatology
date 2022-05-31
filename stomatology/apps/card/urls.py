@@ -4,5 +4,5 @@ from . import views
 app_name = 'card'
 
 urlpatterns = [
-    path('',views.index, name='index')
+    path('<int:id>',views.index, name='index')
 ]

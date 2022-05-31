@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% block title %}Визначення вартісної оцінки{% endblock %}
+{% block content %}
+    {% load static %}
+            <form action={% url 'patients:reg'%} method='POST'>
+    {% csrf_token %}
+    <div class="action">
+
+        <div>
+            <h2>Картка пацієнта</h2>
+        </div>
+        <div class="patient-card">
+            <div>
+                <div>
+                    <input type="text" name="last_name" placeholder="Прізвище">
+                    <input type="text" name="first_name" placeholder="Ім'я">
+                    <input type="text" name="middle_name" placeholder="По батькові">
+                    <input type="text" name="phone" placeholder="Телефон">
+                    <input type="date" name="date_birth" placeholder="Дата народження">
+                </div>
+                <div>
+                    <label for="">Тип протезування</label>
+                    <select name="type" id="">
+                        {% for type in types %}
+                            {% if type.id == client.patientcard.prothesis.type.id %}
+                                <option selected value={{ type.id }}>{{ type.name }}</option>
+                            {% else %}
+                                <option  value={{ type.id }}>{{ type.name }}</option>
+                            {% endif%}
+                        {% endfor %}
+                    </select>
+                <label for="">Конструкція</label>
+                    <select name="construction" id="">
+                        {% for construction in constructions %}
+                            {% if construction.id == client.patientcard.prothesis.construction.id %}
+                                <option selected value={{ construction.id }}>{{ construction.name }}</option>
+                            {% else %}
+                                <option  value={{ construction.id }}>{{ construction.name }}</option>
+                            {% endif%}
+                        {% endfor %}
+                    </select>
+                <label for="">Матеріал</label>
+                    <select name="material" id="">
+                        {% for material in materials %}
+                            {% if material.id == client.patientcard.prothesis.material.id %}
+                                <option selected value={{ material.id }}>{{ material.name }}</option>
+                            {% else %}
+                                <option  value={{ material.id }}>{{ material.name }}</option>
+                            {% endif%}
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+            <div>
+                <fieldset class="gender">
+                    <legend>Стать</legend>
+                    <div>
+                        <label for="gender">М</label>
+                        <input type="checkbox" id="coding" name="gender" value="М">
+
+                    </div>
+                    <div>
+                        <label for="gender">Ж</label>
+                        <input type="checkbox" id="music" name="gender" value="Ж">
+                    </div>
+                </fieldset>
+            </div>
+        </div>
+    </div>
+    <button type="submit">Save</button>
+    </form>
+{% endblock %}

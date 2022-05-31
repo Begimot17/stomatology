@@ -8,3 +8,12 @@ class Materials(models.Model):
     availability = models.IntegerField()
     quality = models.IntegerField()
 
+
+class Type_prost(models.Model):
+    name = models.CharField(max_length=100)
+
+
+class Construction(models.Model):
+    name = models.CharField(max_length=100)
+
+

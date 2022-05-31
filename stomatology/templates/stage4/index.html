@@ -3,48 +3,80 @@
 {% block content %}
     {% load static %}
     <div class="action">
-      <div>
-        <h2>Картка пацієнта</h2>
-      </div>
-      <div class="patient-card">
-        <div>
-          <div>
-            <input type="text" placeholder="Прізвище">
-            <input type="text" placeholder="Ім'я">
-            <input type="text" placeholder="По батькові">
-            <input type="text" placeholder="Телефон">
-            <input type="text" placeholder="Дата народження">
-          </div>
-          <div>
-            <select name="" id=""><option value="value1">Значение 1</option>
-              <option value="value2" selected>Значение 2</option>
-              <option value="value3">Значение 3</option></select>
-              <select name="" id=""><option value="value1">Значение 1</option>
-                <option value="value2" selected>Значение 2</option>
-                <option value="value3">Значение 3</option></select>
-                <select name="" id=""><option value="value1">Значение 1</option>
-                  <option value="value2" selected>Значение 2</option>
-                  <option value="value3">Значение 3</option></select>
-          </div>
-        </div>
-        <div>
-          <fieldset class="gender">
-            <legend>Стать</legend>
-            <div>
-              <label for="gender">М</label>
-              <input type="checkbox" id="coding" name="interest" value="coding">
+      <form action={% url 'patients:update' client.id %} method='POST'>
+            {% csrf_token %}
+            <div class="action">
 
+                <div>
+                    <h2>Картка пацієнта</h2>
+                </div>
+                <div class="patient-card">
+                    <div>
+                        <div>
+                            <input type="text" value="{{ client.user.last_name }}" name="last_name" placeholder="Прізвище">
+                            <input type="text" value="{{ client.user.first_name }}" name="first_name" placeholder="Ім'я">
+                            <input type="text" value="{{ client.user.middle_name }}" name="middle_name" placeholder="По батькові">
+                            <input type="text" value="{{ client.phone }}" name="phone" placeholder="Телефон">
+                            <input type="date" value="{{ client.date_birth|date:"Y-m-d" }}" name="date_birth" placeholder="Дата народження">
+                        </div>
+                        <div>
+                            <label for="">Тип протезування</label>
+                            <select name="type" id="">
+                                {% for type in types %}
+                                    {% if type.id == client.patientcard.prosthesis.type.id %}
+                                        <option selected value={{ type.id }}>{{ type.name }}</option>
+                                    {% else %}
+                                        <option value={{ type.id }}>{{ type.name }}</option>
+                                    {% endif %}
+                                {% endfor %}
+                            </select>
+                            <label for="">Конструкція</label>
+                            <select name="construction" id="">
+                                {% for construction in constructions %}
+                                    {% if construction.id == client.patientcard.prosthesis.construction.id %}
+                                        <option selected value={{ construction.id }}>{{ construction.name }}</option>
+                                    {% else %}
+                                        <option value={{ construction.id }}>{{ construction.name }}</option>
+                                    {% endif %}
+                                {% endfor %}
+                            </select>
+                            <label for="">Матеріал</label>
+                            <select name="material" id="">
+                                {% for material in materials %}
+                                    {% if material.id == client.patientcard.prosthesis.material.id %}
+                                        <option selected value={{ material.id }}>{{ material.name }}</option>
+                                    {% else %}
+                                        <option value={{ material.id }}>{{ material.name }}</option>
+                                    {% endif %}
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div>
+                        <fieldset class="gender">
+                            <legend>Стать</legend>
+                            <div>
+                                <label for="gender" id="coding">М</label>
+                                {% if 'М' == client.gender %}
+                                    <input checked type="radio" id="coding" name="gender" value="М">
+                                {% else %}
+                                    <input type="radio" id="coding" name="gender" value="М"></option>
+                                {% endif %}
+                            </div>
+                            <div>
+                                <label for="gender" id="coding">Ж</label>
+                                {% if 'Ж' == client.gender %}
+                                    <input checked type="radio" id="coding" name="gender" value="Ж">
+                                {% else %}
+                                    <input type="radio" id="coding" name="gender" value="Ж"></option>
+                                {% endif %}
+                            </div>
+                        </fieldset>
+                    </div>
+                </div>
             </div>
-            <div>
-              <label for="gender">Ж</label>
-              <input type="checkbox" id="music" name="interest" value="music">
-
-            </div>
-          </fieldset>
-        </div>
-      </div>
-
-    </div>
+            <button type="submit">Save</button>
+        </form>
     <h2>Етап 4 - Примірка та встановлення протезу</h2>
     <div class="form">
         <div><label for="">Якість сумістності протезу</label><input type="text"></div>
