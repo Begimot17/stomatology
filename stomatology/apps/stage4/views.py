@@ -4,6 +4,8 @@ from .models import *
 from patients.models import *
 from django.http import HttpResponseRedirect
 from materials.models import *
+from datetime import date
+
 
 def index(request,id):
     client = Clients.objects.get(id=id)
