@@ -10,6 +10,8 @@
          <th>Пацієнт</th>
          <th>Статус</th>
          <th>Час прийому</th>
+         <th></th>
+       <th><a href={% url 'timetable:add'%}>Додати</a></th>
 
        </thead>
        <tbody>
@@ -21,6 +23,8 @@
                 </a></td>
                 <td>{{ schedule.patient_card.status }}</td>
                 <td>{{ schedule.date_birth }}</td>
+             <td><a href={% url 'timetable:upd' schedule.id%}>Редагувати</a></td>
+             <td><a href={% url 'timetable:delete' schedule.id%}>Видалити</a></td>
         {% endfor %}
        </tbody>
      </table>

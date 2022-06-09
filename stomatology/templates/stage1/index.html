@@ -89,7 +89,7 @@
     <div><label for="">Колір за шкалою 'Віта'</label><input name="color" type="text" value="{{ client.patientcard.prosthesis.stages_1.color }}"></div>
     <div><label for="">Висновок</label><input name="conclusion" type="text" value="{{ client.patientcard.prosthesis.stages_1.conclusion }}"></div>
     <button type="submit">Save</button>
-    <button>Next</button>
+    <a href={% url 'stage2:index' client.id %}><button type="button">Next</button></a>
     <button>Print</button></div>
     </form>
 

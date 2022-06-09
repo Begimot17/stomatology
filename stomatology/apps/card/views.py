@@ -8,6 +8,8 @@ from django.http import HttpResponseRedirect
 
 def index(request,id):
     client = Clients.objects.get(id=id)
+    card=PatientCard.objects.get(client=client)
+    prothesis=Prosthesis.objects.get(card=card)
     a = Materials.objects.all()
     b = Type_prost.objects.all()
     c = Construction.objects.all()
@@ -15,6 +17,9 @@ def index(request,id):
         'client': client,
         'materials': a,
         'types': b,
-        'constructions': c
+        'constructions': c,
+        'prothesis':prothesis
     }
     return render(request, 'card/index.html',config)
+
+

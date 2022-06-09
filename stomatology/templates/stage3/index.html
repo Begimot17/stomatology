@@ -87,7 +87,7 @@
         <div><label for="">Додатковий опис</label><input type="text" name="description" value="{{ client.patientcard.prosthesis.stages_3.description }}"></div>
         <div><label for="">Висновок</label><input type="text" name="conclusion" value="{{ client.patientcard.prosthesis.stages_3.conclusion }}"></div>
          <button type="submit">Save</button>
-    <button>Next</button>
+        <a href={% url 'stage4:index' client.id %}><button type="button">Next</button></a>
         <button>Print</button></div></div>
     </form>
 

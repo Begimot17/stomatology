@@ -14,8 +14,8 @@
         <th>Етап 2</th>
         <th>Етап 3</th>
         <th>Етап 4</th>
-        <th>Перевірки</th>
         <th>Статус</th>
+        <th><a href={% url 'patients:add'%}>Додати</a></th>
         </thead>
         <tbody>
         {% for client in clients %}
@@ -60,8 +60,8 @@
                         Перейти
                     {% endif %}
                 </a></td>
-            <td>{{ client.patientcard.prosthesis.id }}</td>
             <td>{{ client.patientcard.status }}</td>
+            <td><a href={% url 'patients:delete' client.id%}>Видалити</a></td>
         {% endfor %}
         </tbody>
     </table>

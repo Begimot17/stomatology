@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block title %}Визначення вартісної оцінки{% endblock %}
+{% block content %}
+    {% load static %}
+            <form action={% url 'materials:update' material.id %} method='POST'>
+    {% csrf_token %}
+    <div class="action">
+        <div>
+            <h2>Редагування матеріалу</h2>
+        </div>
+        <div class="patient-card">
+                <div style="display: flex">
+                    <div><label for="">Шифр</label><br><input type="text" value="{{ material.code }}" name="code" placeholder="Шифр"></div>
+                    <div><label for="">Найменування</label><br><input type="text" value="{{ material.name }}" name="name" placeholder="Найменування"></div>
+                    <div><label for="">Виробник</label><br><input type="text" value="{{ material.producer }}" name="producer" placeholder="Виробник"></div>
+                    <div><label for="">Якість</label><br><input type="number" value="{{ material.quality }}" name="quality" placeholder="Якість"></div>
+                    <div><label for="">Наявність</label><br><input type="number" value="{{ material.availability }}" name="availability" placeholder="Наявність"></div>
+                </div>
+        </div>
+    </div>
+    <button type="submit">Update</button>
+    </form>
+{% endblock %}

@@ -43,6 +43,7 @@ def reg(request):
                                   date_birth=request.POST['date_birth'])
     client.save()
     patientcard = PatientCard.objects.create(client=client)
+    patientcard.status = 'Новий пацієнт'
     patientcard.save()
 
     prosthesis = Prosthesis.objects.create(card=patientcard)
@@ -67,10 +68,17 @@ def update(request,id):
     client.phone = request.POST['phone']
     client.gender = request.POST['gender']
     client.date_birth = request.POST['date_birth']
+    card=client.patientcard
+    card.status= request.POST['status']
+    card.save()
     prosthesis=client.patientcard.prosthesis
     prosthesis.material= Materials.objects.get(id=request.POST['material'])
     prosthesis.type = Type_prost.objects.get(id=request.POST['type'])
     prosthesis.construction = Construction.objects.get(id=request.POST['construction'])
     client.save()
     prosthesis.save()
+    return HttpResponseRedirect(reverse('patients:index'))
+
+def delete(request, id):
+    Clients.objects.get(id=id).delete()
     return HttpResponseRedirect(reverse('patients:index'))

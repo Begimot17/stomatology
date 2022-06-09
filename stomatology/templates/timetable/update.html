@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% block title %}Визначення вартісної оцінки{% endblock %}
+{% block content %}
+    {% load static %}
+    <form action={% url 'timetable:update' timetable.id %} method='POST'>
+        {% csrf_token %}
+        <div class="action">
+            <div>
+                <h2>Редагування прийому</h2>
+            </div>
+            <div class="patient-card">
+                <div style="display: flex">
+                    <div><label for="">Лікар</label><br><select name="doctor" id="">
+                        {% for doctor in doctors %}
+                            {% if doctor.id == timetable.doctor.id %}
+                                <option selected value={{ doctor.id }}>{{ doctor.fio }}</option>
+                            {% else %}
+                                <option value={{ doctor.id }}>{{ doctor.fio }}</option>
+                            {% endif %}
+                        {% endfor %}
+                    </select></div>
+                    <div><label for="">Пацієнт</label><br><select name="patient_card" id="">
+                        {% for card in cards %}
+                            {% if card.id == timetable.patient_card.id %}
+                                <option selected value={{ card.id }}>{{ card.client.fio }}</option>
+                            {% else %}
+                                <option  value={{ card.id }}>{{ card.client.fio }}</option>
+                            {% endif%}
+                        {% endfor %}
+                    </select></div>
+                    <div><label for="">Час прийому</label><br><input type="datetime-local" value="{{ time }}"
+                                                                  name="date_birth" placeholder="Час прийому"></div>
+                </div>
+            </div>
+        </div>
+        <button type="submit">Update</button>
+    </form>
+{% endblock %}

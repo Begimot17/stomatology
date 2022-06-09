@@ -11,6 +11,8 @@
          <th>Виробник</th>
          <th>Якість</th>
          <th>Наявність</th>
+         <th></th>
+         <th><a href={% url 'materials:add'%}>Додати</a></th>
        </thead>
        <tbody>
          {% for material in materials %}
@@ -21,6 +23,8 @@
                 <td>{{ material.producer }}</td>
                 <td>{{ material.quality }}</td>
                 <td>{{ material.availability }}</td>
+                 <td><a href={% url 'materials:upd' material.id%}>Редагувати</a></td>
+                 <td><a href={% url 'materials:delete' material.id%}>Видалити</a></td>
         {% endfor %}
        </tbody>
      </table>
