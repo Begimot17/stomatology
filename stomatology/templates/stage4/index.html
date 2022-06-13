@@ -15,7 +15,7 @@
                         <div>
                             <input type="text" value="{{ client.user.last_name }}" name="last_name" placeholder="Прізвище">
                             <input type="text" value="{{ client.user.first_name }}" name="first_name" placeholder="Ім'я">
-                            <input type="text" value="{{ client.user.middle_name }}" name="middle_name" placeholder="По батькові">
+                            <input type="text" value="{{ client.middle_name }}" name="middle_name" placeholder="По батькові">
                             <input type="text" value="{{ client.phone }}" name="phone" placeholder="Телефон">
                             <input type="date" value="{{ client.date_birth|date:"Y-m-d" }}" name="date_birth" placeholder="Дата народження">
                         </div>
@@ -78,40 +78,58 @@
             <button type="submit">Save</button>
         </form>
     <h2>Етап 4 - Примірка та встановлення протезу</h2>
-    <div class="form">
-        <div><label for="">Якість сумістності протезу</label><input type="text"></div>
-        <div><label for="">Виконані дії для підлаштування протезу</label><input type="text"></div>
-        <div><label for="">Якість встановленого протезу</label><input type="text"></div>
+    <form class="form" action={% url 'stage4:update' client.id %} method='POST'>
+        {% csrf_token %}
+        <div><label for="">Якість сумістності протезу</label><input type="text" name="quality_compatib" value="{{ client.patientcard.prosthesis.stages_4.quality_compatib }}"></div>
+        <div><label for="">Виконані дії для підлаштування протезу</label><input type="text" name="actions_perform" value="{{ client.patientcard.prosthesis.stages_4.actions_perform }}"></div>
+        <div><label for="">Якість встановленого протезу</label><input type="text" name="quality_instal" value="{{ client.patientcard.prosthesis.stages_4.quality_instal }}"></div>
         <div><label for="">Додаткові матеріали</label>
             <div>
-                <select name="" id="">
+                <select name="material_1" id="">
                     <option value="-">-</option>
-                    <option value="Матеріал 1">Матеріал 1</option>
-                    <option value="Матеріал 2">Матеріал 2</option>
-                    <option value="Матеріал 3">Матеріал 3</option>
+                    {% for material in materials %}
+                        {% if stage.material_1 == material.name%}
+                            <option selected value="{{material.name}}">{{ material.name }}</option>
+                        {% else %}
+                            <option value="{{material.name}}">{{ material.name }}</option>
+                        {% endif %}
+
+        {% endfor %}
                 </select>
-                <select name="" id="">
+                <select name="material_2" id="">
                     <option value="-">-</option>
-                    <option value="Матеріал 1">Матеріал 1</option>
-                    <option value="Матеріал 2">Матеріал 2</option>
-                    <option value="Матеріал 3">Матеріал 3</option>
+                    {% for material in materials %}
+                        {% if stage.material_2 == material.name%}
+                            <option selected value="{{material.name}}">{{ material.name }}</option>
+                        {% else %}
+                            <option value="{{material.name}}">{{ material.name }}</option>
+                        {% endif %}
+        {% endfor %}
                 </select>
-                <select name="" id="">
+                <select name="material_3" id="">
                     <option value="-">-</option>
-                    <option value="Матеріал 1">Матеріал 1</option>
-                    <option value="Матеріал 2">Матеріал 2</option>
-                    <option value="Матеріал 3">Матеріал 3</option>
+                    {% for material in materials %}
+                        {% if stage.material_3 == material.name%}
+                            <option selected value="{{material.name}}">{{ material.name }}</option>
+                        {% else %}
+                            <option value="{{material.name}}">{{ material.name }}</option>
+                        {% endif %}
+        {% endfor %}
                 </select>
-                <select name="" id="">
+                <select name="material_4" id="">
                     <option value="-">-</option>
-                    <option value="Матеріал 1">Матеріал 1</option>
-                    <option value="Матеріал 2">Матеріал 2</option>
-                    <option value="Матеріал 3">Матеріал 3</option>
+                    {% for material in materials %}
+                        {% if stage.material_4 == material.name%}
+                            <option selected value="{{material.name}}">{{ material.name }}</option>
+                        {% else %}
+                            <option value="{{material.name}}">{{ material.name }}</option>
+                        {% endif %}
+        {% endfor %}
                 </select></div>
         </div>
-        <div><label for="">Висновок</label><input type="text"></div>
-        <button>Save</button>
-        <button>Print</button>
-    </div>
+        <div><label for="">Висновок</label><input type="text" name="conclusion" value="{{ client.patientcard.prosthesis.stages_4.conclusion }}"></div>
+ <button type="submit">Save</button>
+        <a href={% url 'stage4:print_info' client.id %}><button type="button">Print</button></a>
+    </form>
     </div>
 {% endblock %}

@@ -40,13 +40,17 @@ def reg(request):
 
     client= Clients.objects.create(user=user,phone=request.POST['phone'],
                                   gender=request.POST['gender'],
-                                  date_birth=request.POST['date_birth'])
+                                  date_birth=request.POST['date_birth'],
+                                   middle_name = request.POST['middle_name'])
     client.save()
     patientcard = PatientCard.objects.create(client=client)
     patientcard.status = 'Новий пацієнт'
     patientcard.save()
 
     prosthesis = Prosthesis.objects.create(card=patientcard)
+    prosthesis.type = Type_prost.objects.get(id=request.POST['type'])
+    prosthesis.material = Materials.objects.get(id=request.POST['material'])
+    prosthesis.construction = Construction.objects.get(id=request.POST['construction'])
     prosthesis.save()
     stage1=Stages_1.objects.create(prosthesis=prosthesis)
     stage1.save()
@@ -67,10 +71,8 @@ def update(request,id):
     user.save()
     client.phone = request.POST['phone']
     client.gender = request.POST['gender']
+    client.middle_name = request.POST['middle_name']
     client.date_birth = request.POST['date_birth']
-    card=client.patientcard
-    card.status= request.POST['status']
-    card.save()
     prosthesis=client.patientcard.prosthesis
     prosthesis.material= Materials.objects.get(id=request.POST['material'])
     prosthesis.type = Type_prost.objects.get(id=request.POST['type'])

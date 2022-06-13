@@ -4,5 +4,7 @@ from . import views
 app_name = 'stage4'
 
 urlpatterns = [
-    path('<int:id>',views.index, name='index')
+    path('<int:id>',views.index, name='index'),
+    path('update/<int:id>', views.update, name='update'),
+    path('print_info/<int:id>',views.print_info, name='print_info')
 ]

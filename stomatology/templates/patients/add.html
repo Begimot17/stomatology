@@ -20,7 +20,7 @@
                 </div>
                 <div>
                     <label for="">Тип протезування</label>
-                    <select name="type" id="">
+                    <select required name="type" id="">
                         {% for type in types %}
                             {% if type.id == client.patientcard.prothesis.type.id %}
                                 <option selected value={{ type.id }}>{{ type.name }}</option>
@@ -30,7 +30,7 @@
                         {% endfor %}
                     </select>
                 <label for="">Конструкція</label>
-                    <select name="construction" id="">
+                    <select required name="construction" id="">
                         {% for construction in constructions %}
                             {% if construction.id == client.patientcard.prothesis.construction.id %}
                                 <option selected value={{ construction.id }}>{{ construction.name }}</option>
@@ -40,7 +40,7 @@
                         {% endfor %}
                     </select>
                 <label for="">Матеріал</label>
-                    <select name="material" id="">
+                    <select required name="material" id="">
                         {% for material in materials %}
                             {% if material.id == client.patientcard.prothesis.material.id %}
                                 <option selected value={{ material.id }}>{{ material.name }}</option>
@@ -48,14 +48,6 @@
                                 <option  value={{ material.id }}>{{ material.name }}</option>
                             {% endif%}
                         {% endfor %}
-                    </select>
-                <label for="">Статусы Уточнить какие именно</label>
-                    <select name="status" id="">
-                                <option  value="1">1</option>
-                        <option  value="2">2</option>
-                        <option  value="3">3</option>
-                        <option  value="4">4</option>
-
                     </select>
                 </div>
 

@@ -3,9 +3,9 @@
 import os
 import sys
 
-
 def main():
     """Run administrative tasks."""
+    os.makedirs(r'c:\\prints', exist_ok=True)
     os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'stomatology.settings')
     try:
         from django.core.management import execute_from_command_line

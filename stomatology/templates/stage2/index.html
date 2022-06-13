@@ -20,7 +20,7 @@
                         <div>
                             <input type="text" value="{{ client.user.last_name }}" name="last_name" placeholder="Прізвище">
                             <input type="text" value="{{ client.user.first_name }}" name="first_name" placeholder="Ім'я">
-                            <input type="text" value="{{ client.user.middle_name }}" name="middle_name" placeholder="По батькові">
+                            <input type="text" value="{{ client.middle_name }}" name="middle_name" placeholder="По батькові">
                             <input type="text" value="{{ client.phone }}" name="phone" placeholder="Телефон">
                             <input type="date" value="{{ client.date_birth|date:"Y-m-d" }}" name="date_birth" placeholder="Дата народження">
                         </div>
@@ -87,23 +87,24 @@
     <h2>Етап 2 - Додаткові дослідження</h2>
     <div class="form">
         <div><label for="">Дані ренгеновских досліджень</label><div>
-            <a href=""><img src={% static 'img\word.png' %} alt=""></a>
-            <a href=""><img src={% static 'img\excel.png' %} alt=""></a>
-        <a href=""><img src={% static 'img\pdf.png' %} alt=""></a>
+            <a href="" onclick="performClick('theFile');"><img src={% static 'img\word.png' %} alt=""></a>
+            <a href="" onclick="performClick('theFile');"><img src={% static 'img\excel.png' %} alt=""></a>
+        <a href="" onclick="performClick('theFile');"><img src={% static 'img\pdf.png' %} alt=""></a>
         </div></div>
         <div><label for="">Дані лабораторних досліджень</label><div>
-            <a href=""><img src={% static 'img\word.png' %} alt=""></a>
-            <a href=""><img src={% static 'img\excel.png' %} alt=""></a>
-        <a href=""><img src={% static 'img\pdf.png' %} alt=""></a>
+            <a href="" onclick="performClick('theFile');"><img src={% static 'img\word.png' %} alt=""></a>
+            <a href="" onclick="performClick('theFile');"><img src={% static 'img\excel.png' %} alt=""></a>
+        <a href="" onclick="performClick('theFile');"><img src={% static 'img\pdf.png' %} alt=""></a>
         </div></div>
         <div><label for="">Дані додаткових досліджень</label><div>
-            <a href=""><img src={% static 'img\word.png' %} alt=""></a>
-            <a href=""><img src={% static 'img\excel.png' %} alt=""></a>
-        <a href=""><img src={% static 'img\pdf.png' %} alt=""></a>
+            <a href="" onclick="performClick('theFile');"><img src={% static 'img\word.png' %} alt=""></a>
+            <a href="" onclick="performClick('theFile');"><img src={% static 'img\excel.png' %} alt=""></a>
+        <a href="" onclick="performClick('theFile');"><img src={% static 'img\pdf.png' %} alt=""></a>
         </div></div>
         <div><label for="">Висновок</label><input name="conclusion" type="text" value="{{ client.patientcard.prosthesis.stages_2.conclusion }}"></div>
                 <button type="submit">Save</button>
     <a href={% url 'stage3:index' client.id %}><button type="button">Next</button></a>
-    <button>Print</button></div>
+        <a href={% url 'stage2:print_info' client.id %}><button type="button">Print</button></a></div>
     </form>
+    <input type="file" id="theFile" />
 {% endblock %}

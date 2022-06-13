@@ -15,7 +15,7 @@
                         <div>
                             <input type="text" value="{{ client.user.last_name }}" name="last_name" placeholder="Прізвище">
                             <input type="text" value="{{ client.user.first_name }}" name="first_name" placeholder="Ім'я">
-                            <input type="text" value="{{ client.user.middle_name }}" name="middle_name" placeholder="По батькові">
+                            <input type="text" value="{{ client.middle_name }}" name="middle_name" placeholder="По батькові">
                             <input type="text" value="{{ client.phone }}" name="phone" placeholder="Телефон">
                             <input type="date" value="{{ client.date_birth|date:"Y-m-d" }}" name="date_birth" placeholder="Дата народження">
                         </div>
@@ -50,14 +50,6 @@
                                     {% endif %}
                                 {% endfor %}
                             </select>
-                        <label for="">Статусы Уточнить какие именно</label>
-                    <select name="status" id="">
-                                <option  value="1">1</option>
-                        <option  value="2">2</option>
-                        <option  value="3">3</option>
-                        <option  value="4">4</option>
-
-                    </select>
                         </div>
                     </div>
                     <div>
@@ -88,14 +80,14 @@
     </div>
     <h2>Етапи лікування</h2>
     <div class="form">
-        <div><label for="">Етап 1 / {{ prothesis.stages_1.date_record }}</label><input value="{{ prothesis.stages_1.conclusion }}" type="text"></div>
-        <div><label for="">Етап 2 / {{ prothesis.stages_2.date_record }}</label><input value="{{ prothesis.stages_2.conclusion }}" type="text"></div>
-        <div><label for="">Етап 3 / {{ prothesis.stages_3.date_record }}</label><input value="{{ prothesis.stages_3.conclusion }}" type="text"></div>
-        <div><label for="">Етап 4 / {{ prothesis.stages_4.date_record }}</label><input value="{{ prothesis.stages_4.conclusion }}" type="text"></div>
+        <div><label for=""><a href={% url 'stage1:index' client.id %}>Етап 1</a> / {{ prothesis.stages_1.date_record }}</label><input value="{{ prothesis.stages_1.conclusion }}" type="text"></div>
+        <div><label for=""><a href={% url 'stage2:index' client.id %}>Етап 2</a> / {{ prothesis.stages_2.date_record }}</label><input value="{{ prothesis.stages_2.conclusion }}" type="text"></div>
+        <div><label for=""><a href={% url 'stage3:index' client.id %}>Етап 3</a> / {{ prothesis.stages_3.date_record }}</label><input value="{{ prothesis.stages_3.conclusion }}" type="text"></div>
+        <div><label for=""><a href={% url 'stage4:index' client.id %}>Етап 4</a> / {{ prothesis.stages_4.date_record }}</label><input value="{{ prothesis.stages_4.conclusion }}" type="text"></div>
 {#        <div><label for="">Перевірка 1 / 21.10.2022</label><input type="text"></div>#}
 {#        <div><label for="">Перевірка 2 / 21.10.2022</label><input type="text"></div>#}
 {#        <div><label for="">Перевірка 3 / 21.10.2022</label><input type="text"></div>#}
-        <button>Print</button>
+        <a href={% url 'card:print_info' client.id %}><button type="button">Print</button></a>
     </div>
     </div>
 {% endblock %}
